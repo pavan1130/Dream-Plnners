@@ -79,13 +79,17 @@ section h4 {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
+  border-radius: 1rem;
 }
 
 .btn:hover {
   transform: translateY(-1rem);
   transition: all 0.5s ease;
 }
-
+.btn-text {
+  display: inline-block;
+  color: #fff;
+}
 .title {
   text-align: center;
   font-family: sans-serif;
@@ -113,10 +117,15 @@ section h4 {
   right: 0;
   z-index: 1000;
   background: var(--clr1);
-  padding: 2rem 9%;
+  padding: 1rem 2%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 0.5rem;
+}
+.logo img {
+  width: 10rem;
+  height: auto;
 }
 
 .fa-heart {
@@ -124,15 +133,16 @@ section h4 {
 }
 
 .head .logo {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: var(--clr3);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1rem;
+  font-style: italic;
 }
 
 span {
-  color: var(--clr5);
-  font-size: 2.5rem;
+  color: var(--clr2);
+  font-size: 1.5rem;
 }
 
 .head .navbar {
@@ -163,7 +173,11 @@ span {
   align-items: center;
   height: 80vh;
 }
-
+.red-text {
+  color: var(--clr2);
+  font: italic;
+  font-size: 6rem;
+}
 .search-box {
   margin: 20rem 0 0 0;
   color: var(--clr3);
@@ -200,31 +214,81 @@ span {
 }
 
 /*-------------------services--------------*/
+/* Additional CSS for Hover Effects */
+
+.services-col:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.services-col::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.services-col:hover::after {
+  opacity: 1;
+}
+
+/* Adjusted Existing CSS */
 
 .services-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
 }
 
 .services-col {
   height: 22rem;
-  color: rgb(236, 68, 90);
-  background: url("back-2.png");
-  background-color: lightgray;
+  color: #dd8282;
+  background: linear-gradient(
+    to right,
+    rgb(255, 217, 217),
+    rgba(223, 247, 255, 0.8),
+    rgb(255, 232, 232)
+  );
   background-position: center;
-  background-size: cover;
+  background-size: 200% 100%;
   border-radius: 15px;
   flex: 1 1 25rem;
   padding: 1.2rem;
   margin: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: gradientAnimation 5s linear infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .services-col i {
   padding: 2.2rem;
   border: none;
-  background: aliceblue;
+  background: linear-gradient(to right, rgb(46, 22, 49), rgb(48, 22, 22)),
+    rgba(74, 74, 74, 0.9);
   border-radius: 5rem;
   font-size: 2.8rem;
 }
@@ -232,17 +296,18 @@ span {
 .services-col h2 {
   padding: 1rem 0;
   font-size: 2rem;
-  color: #000;
+  font: italic 2em "Roboto Slab", sans-serif;
 }
 
 .services-col p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000;
+  font: italic 1.3em sans-serif;
 }
 
 @media (max-width: 767px) {
   .service {
-    margin-bottom: 30rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -357,14 +422,15 @@ span {
 
 .venue .venue-list .venue-box .venue-info p {
   letter-spacing: 0.1rem;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .venue .venue-list .venue-box .venue-info .btn {
-  width: 12rem;
+  width: 10rem;
   height: 4rem;
   margin: 1rem;
-  padding: 0.6rem;
+  padding: 1rem;
+
   letter-spacing: 0.1rem;
   font-size: 1.6rem;
   font-weight: 700;
@@ -408,7 +474,7 @@ span {
 /*---------------------------footer section-------------*/
 
 footer {
-  padding: 5rem 5%;
+  padding: 1rem 5%;
 }
 
 #contact {
@@ -423,7 +489,7 @@ footer {
 }
 
 .f-container h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: var(--clr3);
   padding: 1rem 0;
 }
@@ -434,6 +500,7 @@ footer {
   color: var(--clr3);
   padding: 1rem 0;
   display: block;
+  font-size: 2rem;
 }
 
 .f-container a:hover {
@@ -450,6 +517,7 @@ footer {
   padding-bottom: 1rem;
   font-size: 1.5rem;
   color: var(--clr1);
+  color: #000000;
 }
 
 .f-container input {
@@ -472,6 +540,7 @@ footer {
   font-size: 2rem;
   background: var(--clr3);
   border-radius: 1rem;
+  margin-right: 1rem;
   padding: 1rem;
 }
 
@@ -490,19 +559,53 @@ footer {
   color: #aaa;
 }
 
-.copyright {
-  padding: 2rem 0;
-  text-align: center;
-  background: var(--clr1);
-  color: #fff;
+.social {
+  display: flex;
+  flex-direction: row;
+}
+.address {
   font-size: 1.5rem;
+  color: #201c1c;
+  margin-top: 5px;
+}
+.contact-info {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, var(--clr2), rgba(255, 255, 255, 0.8));
+  padding: 0.1rem;
+  border-radius: 1rem;
 }
 
-.copyright p {
-  font-size: 1.2rem;
-  color: #aaa;
+.contact-info i {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
+.contact-info p {
+  margin: 1rem;
+  font-size: 1.6rem;
+  color: #fae6f5;
+}
+
+h2 {
+  color: #333;
+}
+
+.contact-info {
+  font-size: 14px;
+  color: #555;
+}
+
+.contact-info a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 4rem;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
 /*----------------------media Query-------------------*/
 
 @media (max-width: 1200px) {
